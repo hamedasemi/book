@@ -1,0 +1,19 @@
+{
+    "name": "book",
+    "version": "1.0.0",
+    "babel": {
+        "presets": [
+            "es2015"
+        ],
+        "plugins": [],
+        "sourceMaps": "inline"
+    },
+    "scripts": {
+        "start": "nodemon --require babel-register ."
+    },
+    "dependencies": {
+        "babel-preset-es2015": "^6.24.1",
+        "babel-register": "^6.26.0",
+        "nodemon": "^1.12.1"
+    }
+}
