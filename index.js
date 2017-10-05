@@ -6,7 +6,22 @@ app.get('/verses', function(req, res) {
     MongoClient.connect('mongodb://user:pass@ds147544.mlab.com:47544/book', function(err, db) {
 
         db.collection('verses', (err, collection) => {
-            collection.find({}, { _id: 0, 'en-itani': 1, 'fa-makarem': 1 }, { skip: 1, limit: 10 }).toArray((err, data) => {
+            console.log(req.query)
+            let fileds = { _id: 0 }
+            if (typeof req.query.editions !== 'string') {
+                req.query.editions.map((edition) => {
+                    Object.assign(fileds, {
+                        [edition]: 1
+                    })
+                });
+            } else {
+                Object.assign(fileds, {
+                    [req.query.editions]: 1
+                })
+            }
+
+
+            collection.find({}, fileds, { skip: parseInt(req.query.skip), limit: parseInt(req.query.limit) }).toArray((err, data) => {
                 res.json(data)
             })
         })
