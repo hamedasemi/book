@@ -2,11 +2,10 @@ import { MongoClient } from 'mongodb'
 const express = require('express')
 const app = express()
 
-app.get('/verses', function(req, res) {
-    MongoClient.connect('mongodb://user:pass@ds147544.mlab.com:47544/book', function(err, db) {
+MongoClient.connect('mongodb://user:pass@ds147544.mlab.com:47544/book', function(err, db) {
+    db.collection('verses', (err, collection) => {
+        app.get('/verses', function(req, res) {
 
-        db.collection('verses', (err, collection) => {
-            console.log(req.query)
             let fileds = { _id: 0 }
             if (typeof req.query.editions !== 'string') {
                 req.query.editions.map((edition) => {
