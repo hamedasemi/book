@@ -3,17 +3,25 @@
     "version": "1.0.0",
     "babel": {
         "presets": [
-            "es2015"
+            "es2015",
+            "stage-0",
+            "stage-3"
         ],
         "plugins": [],
         "sourceMaps": "inline"
     },
     "scripts": {
-        "start": "nodemon --require babel-register ."
+        "start": "nodemon --require babel-register --require babel-polyfill ."
     },
     "dependencies": {
+        "babel-polyfill": "^6.26.0",
         "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "babel-preset-stage-3": "^6.24.1",
         "babel-register": "^6.26.0",
-        "nodemon": "^1.12.1"
+        "express": "^4.16.1",
+        "mongodb": "^2.2.31",
+        "nodemon": "^1.12.1",
+        "rx": "^4.1.0"
     }
 }
