@@ -7,13 +7,13 @@ MongoClient.connect('mongodb://user:pass@ds147544.mlab.com:47544/book', function
         app.get('/verses', function(req, res) {
 
             let fileds = { _id: 0 }
-            if (typeof req.query.editions !== 'string') {
+            if (req.query.editions && typeof req.query.editions !== 'string') {
                 req.query.editions.map((edition) => {
                     Object.assign(fileds, {
                         [edition]: 1
                     })
                 });
-            } else {
+            } else if (req.query.editions) {
                 Object.assign(fileds, {
                     [req.query.editions]: 1
                 })
