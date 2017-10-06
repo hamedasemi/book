@@ -1,11 +1,11 @@
 import Express, { Router } from 'express'
 import { MongoClient } from 'mongodb'
 
-import router from './api'
+import router from './api/v1'
 
 let express = new Express();
 
-express.use('/api', router);
+express.use('/api/v1', router);
 
 
 
