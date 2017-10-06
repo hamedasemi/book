@@ -43,4 +43,31 @@ router.route('/verses').get((req, res) => {
     })
 })
 
+router.route('/editions').get((req, res) => {
+    MongoClient.connect('mongodb://user:pass@ds147544.mlab.com:47544/book', function(err, db) {
+        if (err) {
+            console.error(err);
+            res.status(500).json(err);
+        }
+        db.collection('verses', (err, collection) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json(err);
+            }
+            collection.findOne({}, { _id: 0 }, (err, data) => {
+                let editions = []
+                Object.keys(data).map(function(key) {
+                    editions.push(key)
+                });
+                res.status(200).json(editions)
+            })
+        })
+
+    })
+})
+
+router.route('/authenticate').get((req, res) => {
+    res.json({ message: 'get access token' });
+})
+
 export default router;
