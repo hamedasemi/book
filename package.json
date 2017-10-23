@@ -11,7 +11,9 @@
         "sourceMaps": "inline"
     },
     "scripts": {
-        "start": "nodemon --require babel-register --require babel-polyfill ."
+        "start": "nodemon --require babel-register --require babel-polyfill .",
+        "api": "nodemon --require babel-register --require babel-polyfill ./api.js",
+        "mongo": "mongod --dbpath ./data"
     },
     "dependencies": {
         "babel-polyfill": "^6.26.0",
@@ -21,6 +23,7 @@
         "babel-register": "^6.26.0",
         "express": "^4.16.1",
         "mongodb": "^2.2.31",
+        "nedb": "^1.8.0",
         "nodemon": "^1.12.1",
         "rx": "^4.1.0"
     }

@@ -5,7 +5,7 @@ let router = new Router()
 
 
 router.get('/', (req, res) => {
-    res.json({ message: 'hooray! welcome to our api!' })
+    res.json({ message: 'get list of endpoints' })
 });
 
 router.route('/verses').get((req, res) => {
@@ -66,8 +66,20 @@ router.route('/editions').get((req, res) => {
     })
 })
 
+router.route('/chapters').get((req, res) => {
+    res.json({ message: 'get chapters list' });
+})
+
+router.route('/parts').get((req, res) => {
+    res.json({ message: 'get parts list' });
+})
+
+router.route('/sections').get((req, res) => {
+    res.json({ message: 'get sections list' });
+})
+
 router.route('/authenticate').get((req, res) => {
-    res.json({ message: 'get access token' });
+    res.json({ message: 'get access token throught email' });
 })
 
 export default router;
